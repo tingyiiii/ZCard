@@ -19,6 +19,7 @@ class BoardsController < ApplicationController
     # else
     # end
 
+
     clean_params = params.require(:board).permit(:title)
     @board = Board.new(clean_params)
     # @board.title = params['board']['title'] =>若只有一欄可不用洗乾淨

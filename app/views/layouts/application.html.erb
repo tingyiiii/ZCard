@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ZCard</title>
+    <title>▰Ｚⓒⓐⓡⓓ ▰</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,8 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= p flash["notice"] %>
+  <body class="<%= controller_name %>">
+    <%= render "shared/navbar" %>
+    <%= render "shared/flash" if notice %>
+    <div class="content">
     <%= yield %>
+    </div>
   </body>
 </html>
