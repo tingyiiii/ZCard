@@ -1,4 +1,7 @@
 class BoardsController < ApplicationController
+
+  before_action :find_board, only: [:show, :edit, :update, :destroy]
+  
   # 直接在這渲染
   # def index
   #   render html: "aaa"
@@ -6,6 +9,7 @@ class BoardsController < ApplicationController
   # end
   
   def index
+    @boards = Board.all.page(params[:page]).per(5)
   end
 
   def new
@@ -20,8 +24,7 @@ class BoardsController < ApplicationController
     # end
 
 
-    clean_params = params.require(:board).permit(:title)
-    @board = Board.new(clean_params)
+    @board = Board.new(board_params)
     # @board.title = params['board']['title'] =>若只有一欄可不用洗乾淨
 
     if @board.save
@@ -32,4 +35,40 @@ class BoardsController < ApplicationController
     end
 
   end
+
+  def show
+    # @board = Board.find(params[:id])
+  end
+
+  def edit
+    # @board = Board.find(params[:id])
+  end
+
+  def update
+    # @board = Board.find(params[:id])
+    if @board.update(board_params)
+      # redirect_to board_path(@board), notice: '更新成功'
+      redirect_to @board, notice: '更新成功'
+    else
+      render :edit
+    end
+
+  end
+  
+  def destroy
+    # @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to root_path, notice: '看板已刪除'
+  end
+
+  private
+
+  def find_board
+    @board = Board.find(params[:id])
+  end
+
+  def board_params
+    params.require(:board).permit(:title)
+  end
+
 end

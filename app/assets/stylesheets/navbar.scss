@@ -1,9 +1,9 @@
-
 nav{
   background-color: #0B346E;
   font-size: 20px;
   padding: 0 50px;
   line-height: 60px;
+
   ul{
     display: flex;
     li{
@@ -23,10 +23,7 @@ nav{
   }
   
 }
-.boards nav ul li:nth-child(2){
-  background-color:#F05E1C;
-  font-weight: 700;
-}
-.boards nav ul li:nth-child(2) a{
-  color: #0B346E;
+nav.header{
+  display: flex;
+  justify-content: space-between;
 }

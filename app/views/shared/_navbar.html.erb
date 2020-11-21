@@ -1,6 +1,15 @@
-<nav>
+<nav class="header">
   <ul>
-    <li><a href="/">HOME</a></li>
-    <li><a href="/boards">BOARDS</a></li>
+    <li><%= link_to "HOME", root_path %></a></li>
+    <li><%= link_to "BOARDS", boards_path %></li>
+  </ul>
+  <ul>
+    <% if current_user %>
+      <li><%= link_to current_user.nickname, '#' %></li>
+      <li><%= link_to "登出", logout_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "登入", session_path %></li>
+      <li><%= link_to "註冊", registration_path %></li>
+    <% end %>
   </ul>
 </nav>
