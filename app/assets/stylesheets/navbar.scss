@@ -26,4 +26,8 @@ nav{
 nav.header{
   display: flex;
   justify-content: space-between;
+  p{
+    color: #F05E1C;
+    padding: 0 15px;
+  }
 }

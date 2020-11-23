@@ -7,21 +7,37 @@ Rails.application.routes.draw do
 
   resources :boards
 
-  get '/users/sign_up', to: 'registrations#new', as: 'registration'
-  post '/users', to: 'registrations#create'
+  # resource :users, controller: 'registrations', only: [:create, :edit, :update] do
+  #   get '/sign_up', action: 'new'
+  # end
   
-  get '/users/sign_in', to: 'sessions#new', as: 'session'
-  post '/login', to: 'sessions#create', as: 'login'
+    # post '/users', to: 'registrations#create'
+    # get 'users/edit', to: 'registrations#edit', as: 'edit_registration'
+    # put 'users/edit', to: 'registrations#update', as: 'update_registration'
+    # get '/users/sign_up', to: 'registrations#new', as: 'registration'
 
-  delete '/users/sign_out', to: 'sessions#destroy', as: 'logout'
+  # resource :users, controller: 'sessions', only: [] do 
+  #   get 'sign_in', action: 'new'
+  #   post 'sign_in', action: 'create'
+  #   delete 'sign_out', action: 'destroy'
+  # end
 
-  # devise對照
-  # get '/users/sign_up', to: 'registrations#new', as: 'new_user_registration'
-  # post '/users', to: 'registrations#create', as: 'user_registration'
+  # get '/users/sign_in', to: 'sessions#new', as: 'session'
+  # post '/login', to: 'sessions#create', as: 'login'
+
+  # delete '/users/sign_out', to: 'sessions#destroy', as: 'logout'
+
   
-  # get '/users/sign_in', to: 'sessions#new', as: 'new_user_session'
-  # post '/users/sign_in', to: 'sessions#create', as: 'user_session'
-
-  # delete '/users/sign_out', to: 'sessions#destroy', as: 'destroy_user_session'
+  resource :users, only: [] do 
+    resource :registrations, path: '/', as: 'registration', only: [:create, :edit, :update] do
+      get '/sign_up', action: 'new', as: 'new'
+      # get '/sign_up', to: 'registrations#new', as: 'new'
+    end
+    resource :sessions, path: '/', as: 'session', only: [] do
+      get 'sign_in', action: 'new', as: 'new'
+      post 'sign_in', action: 'create', as: '/'
+      delete 'sign_out', action: 'destroy', as: "destroy"
+    end
+  end
   
 end

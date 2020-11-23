@@ -10,14 +10,14 @@ class SessionsController < ApplicationController
     # @user = User.find_by(email: params[:user][:email], password: pw)
     # if @user......  else...... end
 
-
-    if User.login(params[:user])
+    u = User.login(params[:user])
+    if u
       #發號碼牌(session只能接數字或文字)
-      session[:user2222] = params[:user][:email]
+      session[:user2222] = u.id
 
       redirect_to root_path, notice: '登入成功！'
     else
-      redirect_to session_path, notice: '登入失敗！'
+      redirect_to new_users_session_path, notice: '登入失敗！'
     end
   end
 
