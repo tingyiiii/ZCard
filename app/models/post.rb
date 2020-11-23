@@ -9,8 +9,8 @@ class Post < ApplicationRecord
   #   u == user
   # end
 
-  def owned_by?(user)
-    self.user == user
+  def owned_by?(u)
+    self.user == u
   end
 
 end

@@ -1,4 +1,4 @@
-<%= link_to "回看板", :back %>
+<%= link_to "回看板", board_path(@post.board) %>
 <h2>作者：<%= @post.user.nickname %></h2>
 <h1><%= @post.title %></h1>
 
