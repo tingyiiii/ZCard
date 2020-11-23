@@ -1,1 +1,17 @@
 <h1>新增文章</h1>
+
+<%= form_for(@post, url: board_posts_path(@board)) do |f| %>
+  <div class="field">
+    <%= f.label :title, "文章標題" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "內容" %>
+    <%= f.text_area :content %>
+  </div>
+
+
+    <%= f.submit "新增" %>
+
+<% end %>
