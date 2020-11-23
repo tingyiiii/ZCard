@@ -1,8 +1,8 @@
-<h1><%= @board.title %></h1>
+<h1>看板：<%= @board.title %></h1>
 
 <%= link_to "新增文章", new_board_post_path(@board) %>
 
-<table>
+<table class="board <%= @board.title %>">
   <thead>
     <tr>
       <th>文章標題</th>
@@ -11,9 +11,8 @@
   <tbody>
   <%  @posts.each do |post| %>
     <tr>
-      <td><%= post.title %></td>
+      <td><%= link_to post.title, post %></td>
     </tr>
   <% end %>
-</ul>
 </tbody>
 </table>

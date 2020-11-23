@@ -1,0 +1,12 @@
+<%= link_to "回看板", :back %>
+<h2>作者：<%= @post.user.nickname %></h2>
+<h1><%= @post.title %></h1>
+
+
+  <%= link_to "編輯", edit_post_path(@post) if @post.owned_by?(current_user) %>
+
+<article>
+  <%= simple_format(@post.content) %>
+</article>
+
+
