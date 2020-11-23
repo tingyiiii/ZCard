@@ -21,7 +21,8 @@ class PostsController < ApplicationController
     @post.board = @board
 
     if @post.save
-      redirect_to root_path, notice: '新增文章成功！'
+      # = redirect_to boards_path(@board), notice: '新增文章成功！'
+      redirect_to @board, notice: '新增文章成功！'
     else
       render :new
     end

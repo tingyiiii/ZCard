@@ -1,3 +1,19 @@
 <h1><%= @board.title %></h1>
 
 <%= link_to "新增文章", new_board_post_path(@board) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>文章標題</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%  @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+    </tr>
+  <% end %>
+</ul>
+</tbody>
+</table>
