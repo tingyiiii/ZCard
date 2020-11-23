@@ -7,5 +7,11 @@ module SessionsHelper
 
   end
 
-  
+  def user_sign_in?
+    if current_user
+      return true
+    else
+      return false
+    end
+  end
 end
