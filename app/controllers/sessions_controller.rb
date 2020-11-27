@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
       redirect_to root_path, notice: '登入成功！'
     else
-      redirect_to new_users_session_path, notice: '登入失敗！'
+      redirect_to new_user_session_path, notice: '登入失敗！'
     end
   end
 

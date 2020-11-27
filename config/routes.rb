@@ -30,10 +30,15 @@ Rails.application.routes.draw do
   # delete '/users/sign_out', to: 'sessions#destroy', as: 'logout'
 
   
-  resource :users, only: [] do 
+  resource :user, only: [] do 
     resource :registrations, path: '/', as: 'registration', only: [:create, :edit, :update] do
       get '/sign_up', action: 'new', as: 'new'
       # get '/sign_up', to: 'registrations#new', as: 'new'
+    #   get '/cancel', action: 'cancel'
+    # = collection do
+    #     get 'cancel'
+    #   end
+
     end
     resource :sessions, path: '/', as: 'session', only: [] do
       get 'sign_in', action: 'new', as: 'new'

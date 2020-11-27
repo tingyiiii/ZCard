@@ -39,7 +39,6 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post, notice: '文章更新成功！'
     else
@@ -62,3 +61,5 @@ class PostsController < ApplicationController
 
 
 end
+
+
