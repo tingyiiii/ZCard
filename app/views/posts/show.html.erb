@@ -21,9 +21,8 @@
 <% end %>
 
 <ul class="comments">
-<% @comments.each do |comment| %>
-  <%= render 'comments/comment', comment: comment %>
-<% end %>
+  <!-- render collection -->
+  <%= render @comments %>
 </ul>
 
 
