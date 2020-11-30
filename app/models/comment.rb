@@ -5,4 +5,8 @@ class Comment < ApplicationRecord
 
   # validations
   validates :content, presence: true
+
+  def owned_by?(u)
+    self.user == u
+  end
 end

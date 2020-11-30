@@ -122,6 +122,8 @@ GEM
     puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-mini-profiler (2.2.0)
+      rack (>= 1.2.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -225,6 +227,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.2)
   puma (~> 4.1)
+  rack-mini-profiler (~> 2.2)
   rails (~> 6.0.3, >= 6.0.3.4)
   sass-rails (>= 6)
   selenium-webdriver

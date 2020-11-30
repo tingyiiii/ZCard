@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :session_required
-  before_action :set_post
+  before_action :set_post, only: [:create]
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -13,6 +13,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = current_user.comments.find(params[:id])
+    comment.destroy
+    redirect_to comment.post, notice: "留言已刪除！"
   end
 
   private
