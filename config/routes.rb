@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :posts, shallow: true
   end
 
+  resources :posts, only:[] do 
+    resources :comments, shallow: true, only: [:create, :destroy]
+  end
+
   # resource :users, controller: 'registrations', only: [:create, :edit, :update] do
   #   get '/sign_up', action: 'new'
   # end

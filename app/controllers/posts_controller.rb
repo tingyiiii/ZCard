@@ -30,6 +30,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments.order(id: :desc)
   end
 
   def edit
@@ -58,8 +60,6 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
-
-
 end
 
 

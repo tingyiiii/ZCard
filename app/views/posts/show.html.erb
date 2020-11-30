@@ -9,4 +9,24 @@
   <%= simple_format(@post.content) %>
 </article>
 
+<h2>✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁✿❀❁</h2>
+<h2>Comments.....</h2>
+<%= form_for(@comment, url: post_comments_path(@post)) do |f| %>
+  <ul>
+    <li>
+      <%= f.text_area :content, placeholder: "請輸入留言..." %>
+      <%= f.submit "留言" %>
+    </li>
+  </ul>
+<% end %>
+
+<ul class="comments">
+<% @comments.each do |comment| %>
+  <li class="comment">
+    [<%= comment.user.nickname %>]：
+    <%= comment.content %>
+  </li>
+<% end %>
+</ul>
+
 

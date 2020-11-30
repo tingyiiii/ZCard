@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # association
+  has_many :posts
+  has_many :comments
+  
   # validations
   validates :email, presence: true, uniqueness: true, format: { with: /[\w]+@([\w-]+\.)+[\w-]{2,4}/ }
   validates :password, presence: true, confirmation: true, length: { minimum: 4 }
@@ -6,8 +10,6 @@ class User < ApplicationRecord
 
   # encrypt_password
   before_create :encrypt_password
-
-  has_many :posts
 
   def self.login(u)
     pw = Digest::SHA1.hexdigest("a#{u[:password]}z")
