@@ -23,7 +23,7 @@
 <ul class="comments">
 <% @comments.each do |comment| %>
   <li class="comment">
-    <p class="author"><%= comment.user.nickname %>：</p>
+    <p class="author">↪ <%= comment.user.nickname %>：</p>
     <p><%= comment.content %></p>
     <%= link_to "delete", comment, method: :delete, data: {confirm: "確定要刪除留言嗎?"} if comment.owned_by?(current_user) %>
   </li>

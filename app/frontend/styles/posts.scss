@@ -28,25 +28,20 @@
         font-size: 20px;
         display: flex;
         align-items: center;
-        border: 2px solid #0B346E;
         margin-bottom: 10px;
         p{
           padding-left: 10px;
-          flex:15;
         }
         p.author{
-          background-color: #0B346E;
-          color: #fff;
-          flex:1;
         }
         a{
           text-decoration: none;
           background-color: #F05E1C;
           color: #0B346E;
-          flex:2;
           text-align: center;
           line-height: 28px;
-          border-left: 2px solid #0B346E;
+          margin-left: 20px;
+          border: 2px solid #0B346E;
         }
       }
     }
