@@ -18,6 +18,10 @@ class Comment < ApplicationRecord
   # Product.forb.cheap
   # Product.x
   
+  def destroy
+    update(deleted_at: Time.now)
+  end
+  
 
   def owned_by?(u)
     self.user == u

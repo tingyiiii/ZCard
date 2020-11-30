@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post = @post
     if @comment.save
-      redirect_to @post, notice: "成功留言！"
+      redirect_to @post
     else
       render 'posts/show'
     end
@@ -14,8 +14,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = current_user.comments.find(params[:id])
-    # comment.destroy
-    comment.update(deleted_at: Time.now)
+    comment.destroy
     redirect_to comment.post, notice: "留言已刪除！"
   end
 
