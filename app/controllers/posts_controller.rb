@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :session_required, only: [:new, :create, :edit, :update]
+  before_action :session_required, only: [:new, :create, :edit, :update, :favorite]
   before_action :set_board, only: [:new, :create]
   before_action :set_post, only: [:show, :edit, :update]
 
@@ -49,7 +49,14 @@ class PostsController < ApplicationController
   end
 
   def favorite
-    render html: 'hi'
+    post = Post.find(params[:id])
+    if current_user.favorite?(post)
+      current_user.my_favorites.destroy(post)
+      render json: { status: 'removed' }
+    else
+      current_user.my_favorites << post
+      render json: { status: 'added' }
+    end
   end
 
   private

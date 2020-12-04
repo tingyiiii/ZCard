@@ -1,8 +1,18 @@
 <%= link_to "回看板", board_path(@post.board) %>
 
 <div class="icon">
-  <%= link_to '#', id: 'favorite_btn', data: { id: @post.id } do %>
-    <i class="far fa-5x fa-heart"></i>
+  <% if user_sign_in? %>
+    <%= link_to '#', id: 'favorite_btn', data: { id: @post.id } do %>
+      <% if current_user.favorite?(@post) %>
+        <i class="fas fa-5x fa-heart"></i>
+      <% else %>
+        <i class="far fa-5x fa-heart"></i>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+      <i class="far fa-5x fa-heart"></i>
+    <% end %>
   <% end %>
 </div>
 
