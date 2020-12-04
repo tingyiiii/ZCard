@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :posts, only:[] do 
     resources :comments, shallow: true, only: [:create, :destroy]
+    member do
+      post :favorite
+    end
   end
 
   # resource :users, controller: 'registrations', only: [:create, :edit, :update] do

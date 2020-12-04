@@ -48,6 +48,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def favorite
+    render html: 'hi'
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :content)
