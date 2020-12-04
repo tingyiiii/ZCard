@@ -1,12 +1,12 @@
 <%= link_to "回看板", board_path(@post.board) %>
 
-<div class="icon">
+<div class="icon" data-controller="favorite" data-favorite-id="<%= @post.id %>">
   <% if user_sign_in? %>
-    <%= link_to '#', id: 'favorite_btn', data: { id: @post.id } do %>
+    <%= link_to '#', id: 'favorite_btn', data: { action: 'favorite#go' } do %>
       <% if current_user.favorite?(@post) %>
-        <i class="fas fa-5x fa-heart"></i>
+        <i class="fas fa-5x fa-heart" data-target="favorite.icon"></i>
       <% else %>
-        <i class="far fa-5x fa-heart"></i>
+        <i class="far fa-5x fa-heart" data-target="favorite.icon"></i>
       <% end %>
     <% end %>
   <% else %>
