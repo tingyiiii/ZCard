@@ -30,6 +30,10 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  # scope
+  default_scope { order(id: :desc) }
+
+
   # def owned_by?(u)
   #   u == user
   # end

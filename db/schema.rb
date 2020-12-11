@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_073108) do
+ActiveRecord::Schema.define(version: 2020_12_11_082957) do
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2020_12_11_073108) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.string "state", default: "open"
+    t.integer "user_id"
     t.index ["deleted_at"], name: "index_boards_on_deleted_at"
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -77,8 +79,10 @@ ActiveRecord::Schema.define(version: 2020_12_11_073108) do
     t.string "school"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role", default: "user"
   end
 
+  add_foreign_key "boards", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favorite_posts", "posts"

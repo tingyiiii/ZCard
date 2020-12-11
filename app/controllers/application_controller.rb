@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include Pundit
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # 原型=> rescue_from(ActiveRecord::RecordNotFound, {with: :record_not_found})
+  
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorize
+
 
   private
   def session_required
@@ -12,5 +16,9 @@ class ApplicationController < ActionController::Base
   def record_not_found
     render file: 'public/404.html', layout: false, status: 404
   end
-  
+
+  def not_authorize
+    render file: 'public/422.html', layout: false, status: 422
+  end
+
 end

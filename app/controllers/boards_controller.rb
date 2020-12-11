@@ -24,7 +24,8 @@ class BoardsController < ApplicationController
     # end
 
 
-    @board = Board.new(board_params)
+    # @board = Board.new(board_params)
+    @board = current_user.boards.new(board_params)
     # @board.title = params['board']['title'] =>若只有一欄可不用洗乾淨
 
     if @board.save
@@ -63,6 +64,8 @@ class BoardsController < ApplicationController
   end
 
   def hide
+    authorize @board, :hide?
+    # = authorize @board
     @board.hide! if @board.may_hide?
     redirect_to boards_path, notice: '看板已隱藏！'
   end

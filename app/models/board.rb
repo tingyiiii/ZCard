@@ -5,9 +5,13 @@ class Board < ApplicationRecord
 
   # assciation
   has_many :posts
+  belongs_to :user, optional: true
 
   # validations
   validates :title, presence: true, length: { minimum: 4 }
+
+  # scope
+  default_scope { order(id: :desc) }
 
   # 有限狀態機流程
   aasm column: 'state', no_direct_assignment: true do

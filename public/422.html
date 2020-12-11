@@ -4,7 +4,27 @@
   <title>The change you wanted was rejected (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
+    body{
+      background-color: #0B346E;
+      text-align: center;
+    }
+    .dialog{
+      position: relative;
+    }
+    h1{
+      color:#F05E1C;
+      font-size: 100px;
+      font-weight: 700;
+    }
+    a{
+      text-decoration: none;
+      color: #fff;
+      font-size: 50px;
+      font-weight: 700;
+      position: absolute;
+      top: 100%;
+    }
+  /* .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
@@ -50,18 +70,19 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+  } */
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/422.html -->
   <div class="dialog">
-    <div>
+    <!-- <div>
       <h1>The change you wanted was rejected.</h1>
       <p>Maybe you tried to change something you didn't have access to.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>If you are the application owner check the logs for more information.</p> -->
+    <h1>你沒有權限喔 :(</h1>
   </div>
 </body>
 </html>

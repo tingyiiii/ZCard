@@ -17,12 +17,11 @@
       <!-- <%= link_to "delete", board_path(board.id), method: 'delete', data: {confirm: 'R u sure?'} %> -->
       <%= link_to "delete", board, method: 'delete', data: {confirm: 'R u sure?'} %>
 
-      <%= link_to "隱藏", hide_board_path(board), method: :patch, 
-                            data: {confirm: 'R u sure?'} if board.may_hide? %>
+      <%= link_to "隱藏", hide_board_path(board), method: :patch, data: {confirm: 'R u sure?'} if board.may_hide? %>
 
-      <%= link_to "顯示", open_board_path(board), method: :patch if board.may_open? %>
+      <%= link_to "顯示", open_board_path(board), method: :patch if board.may_open? && policy(board).open? %>
       <%= link_to "鎖定！", lock_board_path(board), method: :patch, 
-                            data: {confirm: 'R u sure?'} if board.may_lock? %>
+                            data: {confirm: 'R u sure?'} if board.may_lock? && policy(board).lock? %>
 
 
     </li>
