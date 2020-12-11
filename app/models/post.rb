@@ -1,5 +1,10 @@
 class Post < ApplicationRecord
   acts_as_paranoid
+
+  # 客製化網址
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   # association
   belongs_to :board
   belongs_to :user
