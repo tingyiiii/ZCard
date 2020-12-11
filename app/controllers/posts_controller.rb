@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :session_required, only: [:new, :create, :edit, :update, :favorite]
-  before_action :set_board, only: [:new, :create]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_board, only: [:new, :create, :destroy]
+  before_action :set_post, only: [:show]
 
   def new
     @post = Post.new
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @post.comments.order(id: :desc).includes(:user)
+    @comments = @post.comments.order(id: :desc).includes(:user).page(1).per(5)
   end
 
   def edit
@@ -47,6 +47,14 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    redirect_to @post.board, notice: "文章已刪除！"
+  end
+
+
 
   def favorite
     post = Post.find(params[:id])

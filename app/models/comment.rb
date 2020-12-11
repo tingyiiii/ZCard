@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  acts_as_paranoid
   # association
   belongs_to :user
   belongs_to :post
@@ -7,7 +8,7 @@ class Comment < ApplicationRecord
   validates :content, presence: true
 
   # 預設過濾掉假刪除的資料
-  default_scope { where(deleted_at: nil) }
+  # default_scope { where(deleted_at: nil) }
 
   # example:
   # modle:
@@ -18,9 +19,10 @@ class Comment < ApplicationRecord
   # Product.forb.cheap
   # Product.x
   
-  def destroy
-    update(deleted_at: Time.now)
-  end
+  # def destroy
+  #   update(deleted_at: Time.now)
+  # end
+  
   
 
   def owned_by?(u)

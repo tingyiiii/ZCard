@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_paranoid
   # association
   belongs_to :board
   belongs_to :user
