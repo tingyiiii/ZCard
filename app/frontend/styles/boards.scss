@@ -45,7 +45,7 @@ ul.boards_list{
       display: flex;
       a{
         text-decoration: none;
-        color:  #F05E1C;
+        // color:  #F05E1C;
         width: 10%;
         line-height: 30px;
       }
@@ -93,4 +93,17 @@ table.board{
     font-size: 30px;
     line-height: 1.5em;
   }
+}
+
+.board-title{
+  font-size: 20px;
+}
+.board-title-open{ 
+
+}
+.board-title-hidden{ 
+  opacity: .3;
+}
+.board-title-locked{ 
+  color: #f00;
 }

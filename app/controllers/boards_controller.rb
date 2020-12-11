@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
 
-  before_action :find_board, only: [:show, :edit, :update, :destroy]
+  before_action :set_board, only: [:show, :edit, :update, :destroy, :hide, :open, :lock]
   
   # 直接在這渲染
   # def index
@@ -62,9 +62,25 @@ class BoardsController < ApplicationController
     redirect_to root_path, notice: '看板已刪除'
   end
 
+  def hide
+    @board.hide! if @board.may_hide?
+    redirect_to boards_path, notice: '看板已隱藏！'
+  end
+
+  def open
+    @board.open! if @board.may_open?
+    redirect_to boards_path, notice: '看板已開！'
+  end
+
+  def lock
+    @board.lock! if @board.may_lock?
+    redirect_to boards_path, notice: '看板已鎖定！'
+  end
+
+
   private
 
-  def find_board
+  def set_board
     @board = Board.find(params[:id])
   end
 

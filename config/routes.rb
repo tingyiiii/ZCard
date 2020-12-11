@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   root 'boards#index'
 
   resources :boards do 
+    member do
+      patch :hide
+      patch :open
+      patch :lock
+    end
     resources :posts, shallow: true
   end
 
