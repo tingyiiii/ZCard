@@ -9,7 +9,8 @@ class Comment < ApplicationRecord
 
   # 預設過濾掉假刪除的資料
   # default_scope { where(deleted_at: nil) }
-
+  default_scope {  order(id: :desc) }
+ 
   # example:
   # modle:
   # scope :cheap, -> { where("price < 50") }
