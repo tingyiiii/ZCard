@@ -8,7 +8,7 @@
     <% if current_user %>
       <p>hi, <%= current_user.nickname %> </p>
       <li>
-        <%= link_to '#' %>
+        <%= link_to cart_path do %>
           <i class="fas fa-dolly-flatbed">(<%= current_cart.items.count %> / $ <%= current_cart.total_price %>)</i>
         <% end %>
       </li>
