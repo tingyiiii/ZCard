@@ -24,10 +24,10 @@ class CartsController < ApplicationController
   private
   def gateway
     Braintree::Gateway.new(
-      :environment => :sandbox,
-      :merchant_id => "js6ywj3qg86ywp7w",
-      :public_key => "7s4qzch7khns236z",
-      :private_key => "c7ca043fe5c8f3501ee1d4493e379249",
+      environment: :sandbox,
+      merchant_id: ENV['braintree_merchant_id'],
+      public_key: ENV['braintree_public_key'],
+      private_key: ENV['braintree_private_key'],
     )
   end
 
