@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :boards
+  has_many :orders
   # 多對多
   has_many :favorite_posts
   has_many :my_favorites, through: :favorite_posts, source: :post

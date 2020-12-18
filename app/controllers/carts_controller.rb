@@ -18,10 +18,17 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+    @token = gateway.client_token.generate
   end
   
   private
-  def current_cart
-    @_cart9999 ||= Cart.from_hash(session[:cart9999])
+  def gateway
+    Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => "js6ywj3qg86ywp7w",
+      :public_key => "7s4qzch7khns236z",
+      :private_key => "c7ca043fe5c8f3501ee1d4493e379249",
+    )
   end
+
 end
