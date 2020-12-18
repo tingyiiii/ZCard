@@ -2,10 +2,16 @@
   <ul>
     <li><%= link_to "HOME", root_path %></a></li>
     <li><%= link_to "BOARDS", boards_path %></li>
+    <li><%= link_to "POINTS", pricing_path %></li>
   </ul>
   <ul>
     <% if current_user %>
       <p>hi, <%= current_user.nickname %> </p>
+      <li>
+        <%= link_to '#' %>
+          <i class="fas fa-dolly-flatbed">(<%= current_cart.items.count %> / $ <%= current_cart.total_price %>)</i>
+        <% end %>
+      </li>
       <li><%= link_to "會員資料", edit_user_registration_path %></li>
       <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li>
     <% else %>

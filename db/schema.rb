@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_060715) do
+ActiveRecord::Schema.define(version: 2020_12_18_024110) do
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_060715) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "role", default: "user"
+    t.string "state", default: "user"
   end
 
   add_foreign_key "boards", "users"

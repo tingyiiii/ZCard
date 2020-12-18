@@ -12,12 +12,18 @@ nav{
         a{
           text-decoration: none;
           color: #F05E1C;
+          i{
+            color: #F05E1C;
+          }
         }
     }
     li:hover{
       background-color:#F05E1C;
       a{
         color: #0B346E;
+        i{
+          color: #0B346E;
+        }
       }
     }
   }

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # 有限狀態機
+  include AASM
+
   # association
   has_many :posts
   has_many :comments
@@ -22,6 +25,20 @@ class User < ApplicationRecord
 
   def favorite?(post)
     my_favorites.include?(post)
+  end
+
+  # 有限狀態機流程
+  aasm column: 'state', no_direct_assignment: true do
+    state :user, initial: true
+    state :vip, :vvip
+
+    event :pay_vip do
+      transitions from: :user, to: :vip
+    end
+
+    event :pay_vvip do
+      transitions from: [:user, :vip], to: :vvip
+    end
   end
 
   private
