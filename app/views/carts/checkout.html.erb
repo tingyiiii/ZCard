@@ -1,0 +1,26 @@
+<h1>結帳</h1>
+
+<%= render 'cart', cart: current_cart %>
+
+<h1>收件人資訊</h1>
+
+<%= form_for(@order) do |f| %>
+  <ul>
+    <li>
+      <%= f.label :username, '收件人' %>
+      <%= f.text_field :username %>
+    </li>
+
+    <li>
+      <%= f.label :tel, '電話' %>
+      <%= f.text_field :tel %>
+    </li>
+
+    <li>
+      <%= f.label :address, '地址' %>
+      <%= f.text_field :address %>
+    </li>
+
+    <%= f.submit '確認付款' %>
+  </ul>
+<% end %>

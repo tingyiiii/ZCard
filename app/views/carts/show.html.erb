@@ -1,34 +1,7 @@
 <h1> 購物車</h1>
 <%= link_to '清空', cart_path, method: :delete %>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名稱</th>
-      <th>數量</th>
-      <th>單價</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% current_cart.items.each do |item| %>
-    <tr>
-      <td><%= item.product.title %></td>
-      <td><%= item.quantity %></td>
-      <td><%= item.product.price %></td>
-      <td><%= item.total_price %></td>
-    </tr>
-  <% end %>
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td colspan="3">總價</td>
-      <td><%= current_cart.total_price %></td>
-    </tr>
-  </tfoot>
-</table>
+<%= render 'cart', cart: current_cart %>
 
 <%= link_to "繼續選購", pricing_path %>
-<%= link_to "結帳", '#' unless current_cart.empty? %>
+<%= link_to "結帳", checkout_cart_path unless current_cart.empty? %>

@@ -63,6 +63,9 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show, :destroy] do
     post 'add_item/:id', action: 'add_item', as: 'add_item'
+    get '/checkout', action: 'checkout'
   end
+
+  resource :orders, only: [:index, :show, :create, :destroy]
   
 end
